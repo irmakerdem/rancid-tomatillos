@@ -1,12 +1,22 @@
 import React from 'react';
+import Card from './Card';
+import './Movies.css';
 
-const Movies = () => {
+const Movies = ({movies}) => {
 
 // map over movieData and create Card component for each element
-
-  // return (
-
-  // )
+const movieCards = movies.map(movie => {
+  return (
+    <Card
+      title={movie.title}
+      />
+  )
+})
+  return (
+    <div>
+      {movieCards}
+    </div>
+  )
 
 }
 
