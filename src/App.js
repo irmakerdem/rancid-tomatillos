@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import movieData from './movieData';
+// import movieData from './movieData';
 import React, {Component} from 'react';
 import Movies from './Movies';
 import MovieDisplay from './MovieDisplay'
@@ -9,9 +8,22 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      movies: movieData.movies,
-      movie: null
+      movies: [],
+      // movies: movieData.movies,
+      movie: null,
+      error: ''
     }
+  }
+
+  componentDidMount = () => {
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+      .then(response => response.json())
+      // .then(data => this.setState({ ideas: data }))
+      .then(movies => this.setState({ movies: movies.movies }))
+      .catch(error => {
+        this.setState({ error: error.message })
+        // this.setState({ error: 'Please try again' })
+      })
   }
 
   findMovie = (id) => {
