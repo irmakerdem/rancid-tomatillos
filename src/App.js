@@ -15,9 +15,11 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1 className='siteTitle'>Rancid Tomatillos</h1>
-          <Movies movies={this.state.movies}/>
+      <div className='app'>
+        <header>
+          <h1 className='siteTitle'>Rancid Tomatillos</h1>
+        </header>
+        <Movies movies={this.state.movies}/>
       </div>
     )
   }
