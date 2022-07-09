@@ -9,11 +9,14 @@ const movieCards = movies.map(movie => {
   return (
     <Card
       title={movie.title}
+      img={movie.poster_path}
+      rating={movie.average_rating}
+      key={movie.id}
       />
   )
 })
   return (
-    <div>
+    <div className='movies-container'>
       {movieCards}
     </div>
   )
