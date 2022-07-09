@@ -2,7 +2,7 @@ import React from 'react';
 import Card from './Card';
 import './Movies.css';
 
-const Movies = ({movies}) => {
+const Movies = ({movies, findMovie}) => {
 
 // map over movieData and create Card component for each element
 const movieCards = movies.map(movie => {
@@ -12,6 +12,8 @@ const movieCards = movies.map(movie => {
       img={movie.poster_path}
       rating={movie.average_rating}
       key={movie.id}
+      id={movie.id}
+      findMovie={findMovie}
       />
   )
 })

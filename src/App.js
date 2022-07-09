@@ -3,6 +3,7 @@ import './App.css';
 import movieData from './movieData';
 import React, {Component} from 'react';
 import Movies from './Movies';
+import MovieDisplay from './MovieDisplay'
 
 class App extends Component {
   constructor() {
@@ -13,13 +14,18 @@ class App extends Component {
     }
   }
 
+  findMovie = (id) => {
+    const foundMovie = this.state.movies.find(movie => movie.id === id);
+    this.setState({movie: foundMovie});
+  }
+
   render() {
     return (
       <div className='app'>
         <header>
           <h1 className='siteTitle'>Rancid Tomatillos</h1>
         </header>
-        <Movies movies={this.state.movies}/>
+        {this.state.movie ? <MovieDisplay /> : <Movies movies={this.state.movies} findMovie={this.findMovie}/>}
       </div>
     )
   }
