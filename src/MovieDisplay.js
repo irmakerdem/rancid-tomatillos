@@ -14,8 +14,12 @@ const MovieDisplay = ( {movie, goHome}) => {
         <img className='moviePoster' src={movie.poster_path} />
         <div className='movieInfo'>
           <p>Title: {movie.title}</p>
-          <p>Average Rating: {movie.average_rating}</p>
+          <p>Average Rating: {movie.average_rating.toFixed(1)}</p>
+          <p>Overview: {movie.overview}</p>
           <p>Release Date: {movie.release_date}</p>
+          <p>Runtime: {movie.runtime}</p>
+          <p>Tagline: {movie.tagline}</p>
+          <p>Genres: {movie.genres.join(', ')}</p>
           <img className='arrow' src={arrowIcon} onClick={() => goHome()}/>
         </div>
       </div>

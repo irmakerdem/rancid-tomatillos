@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import movieData from './movieData';
+// import movieData from './movieData';
 import React, {Component} from 'react';
 import Movies from './Movies';
 import MovieDisplay from './MovieDisplay'
@@ -9,14 +8,40 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      movies: movieData.movies,
-      movie: null
+      movies: [],
+      // movies: movieData.movies,
+      movie: null,
+      error: ''
     }
   }
 
+  componentDidMount = () => {
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+      .then(response => {
+        // console.log(response)
+        if(!response.ok) {
+          throw new Error("Oopsies! Something went wrong 🤡")
+        } else {
+          return response.json()
+        }
+      })
+      // .then(data => this.setState({ ideas: data }))
+      .then(movies => this.setState({ movies: movies.movies }))
+      .catch(error => {
+        this.setState({ error: "ERROR: " + error.message })
+        // this.setState({ error: 'An error occured. Please try again!' })
+      })
+  }
+
   findMovie = (id) => {
-    const foundMovie = this.state.movies.find(movie => movie.id === id);
-    this.setState({movie: foundMovie});
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+      .then(response => response.json())
+      .then(movie => this.setState({ movie: movie.movie }))
+      .catch(error => {
+        this.setState({ error: "ERROR: " + error.message })
+      })
+    // const foundMovie = this.state.movies.find(movie => movie.id === id);
+    // this.setState({movie: foundMovie});
   }
 
   goHome = () => {
@@ -29,6 +54,7 @@ class App extends Component {
         <header>
           <h1 className='siteTitle'>Rancid Tomatillos</h1>
         </header>
+        { this.state.error && <p>{this.state.error}</p> }
         {this.state.movie ? <MovieDisplay movie={this.state.movie} goHome={this.goHome} /> : <Movies movies={this.state.movies} findMovie={this.findMovie}/> }
       </div>
     )
