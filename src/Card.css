@@ -1,0 +1,27 @@
+.card {
+  box-sizing: border-box;
+  border: 2px solid #44AF69;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  border-radius: 10px;
+  background-color: #44AF69;
+}
+
+.moviePicture {
+  height: 70%;
+  width: 90%;
+}
+
+.movieTitle {
+  font-size: 13px;
+}
+
+.movieRating {
+  font-size: 12px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
