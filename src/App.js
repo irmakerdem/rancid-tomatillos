@@ -25,7 +25,7 @@ class App extends Component {
         <header>
           <h1 className='siteTitle'>Rancid Tomatillos</h1>
         </header>
-        {this.state.movie ? <MovieDisplay /> : <Movies movies={this.state.movies} findMovie={this.findMovie}/>}
+        {this.state.movie ? <MovieDisplay movie={this.state.movie} /> : <Movies movies={this.state.movies} findMovie={this.findMovie}/> }
       </div>
     )
   }
