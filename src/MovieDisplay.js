@@ -16,6 +16,7 @@ const MovieDisplay = ( {movie, goHome}) => {
           <p>Title: {movie.title}</p>
           <p>Average Rating: {movie.average_rating.toFixed(1)}</p>
           <p>Release Date: {movie.release_date}</p>
+          <p>Overview: {movie.overview}</p>
           <img className='arrow' src={arrowIcon} onClick={() => goHome()}/>
         </div>
       </div>

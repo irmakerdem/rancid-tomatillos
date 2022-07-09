@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movie')
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
       .then(response => {
         // console.log(response)
         if(!response.ok) {
@@ -34,8 +34,14 @@ class App extends Component {
   }
 
   findMovie = (id) => {
-    const foundMovie = this.state.movies.find(movie => movie.id === id);
-    this.setState({movie: foundMovie});
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/moves/${id}`)
+      .then(response => response.json())
+      .then(movie => this.setState({ movie: movie.movie }))
+      .catch(error => {
+        this.setState({ error: "ERROR: " + error.message })
+      })
+    // const foundMovie = this.state.movies.find(movie => movie.id === id);
+    // this.setState({movie: foundMovie});
   }
 
   goHome = () => {
