@@ -1,7 +1,8 @@
 import React from 'react';
 import './MovieDisplay.css';
+import arrowIcon from './arrowIcon.png';
 
-const MovieDisplay = ( {movie}) => {
+const MovieDisplay = ( {movie, goHome}) => {
 
   // const styles = {
   //   backgroundImage: `url("https://image.tmdb.org/t/p/original//oazPqs1z78LcIOFslbKtJLGlueo.jpg")`
@@ -15,7 +16,7 @@ const MovieDisplay = ( {movie}) => {
           <p>Title: {movie.title}</p>
           <p>Average Rating: {movie.average_rating}</p>
           <p>Release Date: {movie.release_date}</p>
-          <img className='arrow' src='' />
+          <img className='arrow' src={arrowIcon} onClick={() => goHome()}/>
         </div>
       </div>
     </div>

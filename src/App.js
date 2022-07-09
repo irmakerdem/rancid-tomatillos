@@ -19,13 +19,17 @@ class App extends Component {
     this.setState({movie: foundMovie});
   }
 
+  goHome = () => {
+    this.setState({movie: null});
+  }
+
   render() {
     return (
       <div className='app'>
         <header>
           <h1 className='siteTitle'>Rancid Tomatillos</h1>
         </header>
-        {this.state.movie ? <MovieDisplay movie={this.state.movie} /> : <Movies movies={this.state.movies} findMovie={this.findMovie}/> }
+        {this.state.movie ? <MovieDisplay movie={this.state.movie} goHome={this.goHome} /> : <Movies movies={this.state.movies} findMovie={this.findMovie}/> }
       </div>
     )
   }
