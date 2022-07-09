@@ -1,0 +1,26 @@
+.movieBackdrop {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+}
+
+.moviePoster {
+  height: 400px;
+  width: 300px;
+}
+
+.movieInfo {
+  height: 400px;
+  width: 300px;
+  border: 2px solid orange;
+  background-color: rgb(234, 160, 22);
+}
+
+.movieContainer {
+  height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 2px solid purple;
+}
