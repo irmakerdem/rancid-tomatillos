@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   findMovie = (id) => {
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/moves/${id}`)
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
       .then(response => response.json())
       .then(movie => this.setState({ movie: movie.movie }))
       .catch(error => {
