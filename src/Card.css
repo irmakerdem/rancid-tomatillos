@@ -8,12 +8,17 @@
   text-align: center;
   margin: 0;
   border-radius: 10px;
-  background-color: #44AF69;
+  /* background-color: #44AF69;  */
+  background-image: linear-gradient(to bottom left, #44AF69, #2B9EB3);
+  padding: 17px 0px 17px 0px;
 }
 
 .moviePicture {
-  height: 70%;
-  width: 90%;
+  /* height: 70%;
+  width: 90%; */
+  width: 73%;
+  height: 330px;
+  border-radius: 5px;
 }
 
 .movieTitle {
