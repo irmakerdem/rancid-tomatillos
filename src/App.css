@@ -1,11 +1,19 @@
-.siteTitle {
-  font-size: 20px;
-  text-align: center;
-  color: rgb(193, 28, 185);
-  margin-top: 0;
-  margin-bottom: 20px;
+.siteHeader {
+  height: 50px;
+  /* margin-bottom: 40px; */
+  background-color:#F8333C;
+  padding-bottom: 10px;
+  /* background-image: linear-gradient(to bottom right, #FCAB10, #F8333C); */
+  background-image: linear-gradient(to bottom right, #F8333C, #FCAB10);
 }
 
-header {
-  background-color:#2B9EB3;
+.siteTitle {
+  font-family: fantasy;
+
+  text-align: center;
+  /* color: #FCAB10; */
+  color: #faf9f6d8;
+  /* color: black; */
+  margin-top: 0;
+  padding-top: 10px;
 }

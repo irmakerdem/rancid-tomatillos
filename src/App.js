@@ -51,8 +51,8 @@ class App extends Component {
   render() {
     return (
       <div className='app'>
-        <header>
-          <h1 className='siteTitle'>Rancid Tomatillos</h1>
+        <header className='siteHeader'>
+          <h1 className='siteTitle'>Rancid Tomatillos 🍿</h1>
         </header>
         { this.state.error && <p>{this.state.error}</p> }
         {this.state.movie ? <MovieDisplay movie={this.state.movie} goHome={this.goHome} /> : <Movies movies={this.state.movies} findMovie={this.findMovie}/> }
