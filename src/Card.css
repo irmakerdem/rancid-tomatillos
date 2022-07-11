@@ -10,7 +10,11 @@
   border-radius: 10px;
   /* background-color: #44AF69;  */
   background-image: linear-gradient(to bottom left, #44AF69, #2B9EB3);
-  padding: 17px 0px 17px 0px;
+  padding: 25px 0px 17px 0px;
+  /* height: 423px; */
+  height: 435px;
+  /* padding: 25px 0px 17px 0px;
+  height: 457px; */
 }
 
 .moviePicture {
@@ -22,11 +26,16 @@
 }
 
 .movieTitle {
-  font-size: 13px;
+  font-size: 18px;
+  padding: 7px 0px 0px 0px;
+  margin: 0px;
+  font-family: fantasy;
+  color: white;
 }
 
 .movieRating {
-  font-size: 12px;
+  font-size: 13px;
   margin-top: 0;
   margin-bottom: 0;
+  color: white;
 }
