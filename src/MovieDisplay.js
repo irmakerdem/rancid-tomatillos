@@ -13,13 +13,13 @@ const MovieDisplay = ( {movie, goHome}) => {
       <div className='movieContainer'>
         <img className='moviePoster' src={movie.poster_path} />
         <div className='movieInfo'>
-          <p>Title: {movie.title}</p>
-          <p>Average Rating: {movie.average_rating.toFixed(1)}</p>
-          <p>Overview: {movie.overview}</p>
-          <p>Release Date: {movie.release_date}</p>
-          <p>Runtime: {movie.runtime}</p>
-          <p>Tagline: {movie.tagline}</p>
-          <p>Genres: {movie.genres.join(', ')}</p>
+          <p className='infoTitle'>Title: <span className='infoContent'> {movie.title}</span></p>
+          <p className='infoTitle'>Average Rating: <span className='infoContent'>{movie.average_rating.toFixed(1)}</span></p>
+          <p className='infoTitle'>Overview: <span className='infoContent'>{movie.overview}</span></p>
+          <p className='infoTitle'>Release Date: <span className='infoContent'>{movie.release_date}</span></p>
+          <p className='infoTitle'>Runtime: <span className='infoContent'>{movie.runtime} minutes</span></p>
+          <p className='infoTitle'>Tagline: <span className='infoContent'>{movie.tagline}</span></p>
+          <p className='infoTitle'>Genres: <span className='infoContent'>{movie.genres.join(', ')}</span></p>
           <img className='arrow' src={arrowIcon} onClick={() => goHome()}/>
         </div>
       </div>
