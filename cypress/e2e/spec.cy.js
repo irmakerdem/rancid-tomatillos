@@ -3,7 +3,7 @@ describe('Rancid Tomatillos', () => {
   //   cy.visit('http://localhost:3000');
   // });
 
-  it('Should be able to visit the page and render the correct elements', () => {
+  it('Should be able to visit the page and renders the header', () => {
     cy.visit('http://localhost:3000')
       .contains('Rancid Tomatillos')
   });
@@ -44,6 +44,9 @@ describe('Rancid Tomatillos', () => {
       .should(($img) => {
         expect($img[0].naturalWidth).to.be.greaterThan(0)
       })
+      .should(($img) => {
+        expect($img[0].naturalHeight).to.be.greaterThan(0)
+      })
   });
     
   //this does not currently work!!
@@ -72,6 +75,13 @@ describe('Rancid Tomatillos', () => {
 
   //stubbing
 
+   it('Should be able to test for a 500 error', () => {
+    cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+      statusCode: 500
+    })
+    cy.visit('http://localhost:3000')
+    cy.contains("Oopsies! Something went wrong 🤡")
+  });
   //error handling testing?
 
   //user can enter inputs (or dropdown) and click GO button

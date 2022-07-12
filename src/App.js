@@ -26,7 +26,7 @@ class App extends Component {
         }
       })
       // .then(data => this.setState({ ideas: data }))
-      .then(movies => this.setState({ movies: movies.movies }))
+      .then(data => this.setState({ movies: data.movies }))
       .catch(error => {
         this.setState({ error: "ERROR: " + error.message })
         // this.setState({ error: 'An error occured. Please try again!' })
@@ -36,7 +36,7 @@ class App extends Component {
   findMovie = (id) => {
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
       .then(response => response.json())
-      .then(movie => this.setState({ movie: movie.movie }))
+      .then(data => this.setState({ movie: data.movie }))
       .catch(error => {
         this.setState({ error: "ERROR: " + error.message })
       })
@@ -45,7 +45,7 @@ class App extends Component {
   }
 
   goHome = () => {
-    this.setState({movie: null});
+    this.setState({ movie: null });
   }
 
   render() {
