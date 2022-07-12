@@ -40,8 +40,6 @@ class App extends Component {
       .catch(error => {
         this.setState({ error: "ERROR: " + error.message })
       })
-    // const foundMovie = this.state.movies.find(movie => movie.id === id);
-    // this.setState({movie: foundMovie});
   }
 
   goHome = () => {
