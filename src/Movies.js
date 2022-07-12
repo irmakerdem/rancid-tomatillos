@@ -18,7 +18,7 @@ const movieCards = movies.map(movie => {
   )
 })
   return (
-    <div className='movies-container'>
+    <div className='moviesContainer'>
       {movieCards}
     </div>
   )
