@@ -8,6 +8,77 @@ describe('Rancid Tomatillos', () => {
       .contains('Rancid Tomatillos')
   });
 
+  it('Should be able to view a movie\'s title and rating', () => {
+    cy.get('.moviesContainer > :nth-child(1)')
+    cy.contains('Money Plane').should('be.visible')
+    cy.contains('Average Rating: 6.9').should('be.visible')
+  });
+
+  it('Should be able to view a movie\'s image', () => {
+    // cy.get(':nth-child(1) > img')
+    cy.get(':nth-child(1) > .moviePicture')
+      .should('be.visible')
+      .should(($img) => {
+        expect($img[0].naturalWidth).to.be.greaterThan(0)
+      })
+      .should(($img) => {
+        expect($img[0].naturalHeight).to.be.greaterThan(0)
+      })
+      // https://stackoverflow.com/questions/51246606/test-loading-of-image-in-cypress
+  });
+
+  it('Should be able to click a movie\'s image and see its details', () => {
+    cy.get(':nth-child(1) > .moviePicture').click()
+    cy.contains('Title: Money Plane')
+    cy.contains('Average Rating: 6.9')
+    cy.contains('Overview: A professional thief with $40 million in debt and his family\'s life on the line must commit one final heist - rob a futuristic airborne casino filled with the world\'s most dangerous criminals.')
+    cy.contains('Release Date: 2020-09-29')
+    cy.contains('Runtime: 82 minutes')
+    cy.contains('Tagline:')
+    cy.contains('Genres: Action')
+  });
+
+  it('Should be able to view a movie\'s small image', () => {
+    cy.get('.moviePoster')
+      .should('be.visible')
+      .should(($img) => {
+        expect($img[0].naturalWidth).to.be.greaterThan(0)
+      })
+  });
+    
+  //this does not currently work!!
+  // it('Should be able to view a movie\'s backdrop image', () => {
+  //   cy.get('.movieContainer')
+  //     .should('be.visible')
+  //     .should(($img) => {
+  //       expect($img[0].naturalWidth).to.be.greaterThan(0)
+  //     })
+  // });
+
+  it('Should show an arrow', () => {
+    cy.get('input[type="image"]')
+    .should('be.visible')
+  });
+
+  it('Should be able to click the arrow', () => {
+    cy.get('input[type="image"]').click()
+  });
+
+  //get updated url to then test for
+  // it('Should be able to click the image and see things', () => {
+  //   cy.get('').click()
+  //   cy.url().should('include', '/dashboard')
+  // });
+
+  //stubbing
+
+  //error handling testing?
+
+  //user can enter inputs (or dropdown) and click GO button
+
+  //user see movies based on search
+
+
   // it('should be able to select the email and password inputs and fill them with the corresponding values', () => {
   //   cy.get('input[type="email"]')
   //     .type('leta@turing.io')
@@ -62,4 +133,4 @@ describe('Rancid Tomatillos', () => {
   //   .get('button').click()
   //   .get('p').should('contain', 'Email and password do not match.  Please try again.')
   // });
-})
+});

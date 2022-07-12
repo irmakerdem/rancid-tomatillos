@@ -20,7 +20,7 @@ const MovieDisplay = ( {movie, goHome}) => {
           <p className='infoTitle'>Runtime: <span className='infoContent'>{movie.runtime} minutes</span></p>
           <p className='infoTitle'>Tagline: <span className='infoContent'>{movie.tagline}</span></p>
           <p className='infoTitle'>Genres: <span className='infoContent'>{movie.genres.join(', ')}</span></p>
-          <img className='arrow' src={arrowIcon} onClick={() => goHome()}/>
+          <input type="image" className='arrow' src={arrowIcon} onClick={() => goHome()}/>
         </div>
       </div>
     </div>
