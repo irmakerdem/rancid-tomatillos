@@ -61,11 +61,8 @@ class App extends Component {
         />
         <Route
           exact path="/:movieId"
-          render={({ match }) => {
-
-            console.log("match", match);
-          return <MovieDisplay id={match.params.movieId}/>
-          }}
+          render={({ match }) => <MovieDisplay id={match.params.movieId}/>
+          }
         />
         {/* {this.state.movie ? <MovieDisplay movie={this.state.movie} goHome={this.goHome} /> : <Movies movies={this.state.movies} findMovie={this.findMovie}/> } */}
       </div>
