@@ -64,7 +64,7 @@ class App extends Component {
           render={({ match }) => {
 
             console.log("match", match);
-          <MovieDisplay movie={this.state.movie} goHome={this.goHome}/>
+          return <MovieDisplay id={match.params.movieId}/>
           }}
         />
         {/* {this.state.movie ? <MovieDisplay movie={this.state.movie} goHome={this.goHome} /> : <Movies movies={this.state.movies} findMovie={this.findMovie}/> } */}
