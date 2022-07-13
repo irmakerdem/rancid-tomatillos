@@ -1,6 +1,7 @@
 import React from 'react';
 import './MovieDisplay.css';
 import arrowIcon from './arrowIcon.png';
+import { Link } from 'react-router-dom';
 
 const MovieDisplay = ( {movie, goHome}) => {
 
@@ -22,7 +23,9 @@ const MovieDisplay = ( {movie, goHome}) => {
           <p className='infoTitle'>Runtime: <span className='infoContent'>{movie.runtime} minutes</span></p>
           <p className='infoTitle'>Tagline: <span className='infoContent'>{movie.tagline}</span></p>
           <p className='infoTitle'>Genres: <span className='infoContent'>{movie.genres.join(', ')}</span></p>
-          <input type="image" className='arrow' src={arrowIcon} onClick={() => goHome()}/>
+          <Link to='/'>
+            <input type="image" className='arrow' src={arrowIcon} onClick={() => goHome()}/>
+          </Link>
         </div>
       </div>
     </div>
