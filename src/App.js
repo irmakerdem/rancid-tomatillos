@@ -2,7 +2,8 @@ import './App.css';
 // import movieData from './movieData';
 import React, {Component} from 'react';
 import Movies from './Movies';
-import MovieDisplay from './MovieDisplay'
+import MovieDisplay from './MovieDisplay';
+import { Route } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -53,7 +54,20 @@ class App extends Component {
           <h1 className='siteTitle'> 🍿 Rancid Tomatillos 🍿</h1>
         </header>
         { this.state.error && <p>{this.state.error}</p> }
-        {this.state.movie ? <MovieDisplay movie={this.state.movie} goHome={this.goHome} /> : <Movies movies={this.state.movies} findMovie={this.findMovie}/> }
+        <Route
+          exact path="/"     
+          render={ () => <Movies movies={this.state.movies} />
+          }
+        />
+        <Route
+          exact path="/:movieId"
+          render={({ match }) => {
+
+            console.log("match", match);
+          <MovieDisplay movie={this.state.movie} goHome={this.goHome}/>
+          }}
+        />
+        {/* {this.state.movie ? <MovieDisplay movie={this.state.movie} goHome={this.goHome} /> : <Movies movies={this.state.movies} findMovie={this.findMovie}/> } */}
       </div>
     )
   }
