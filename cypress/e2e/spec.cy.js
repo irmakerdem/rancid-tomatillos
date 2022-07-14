@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe('Rancid Tomatillos', () => {
   // beforeEach(() => {
   //   cy.visit('http://localhost:3000');
@@ -9,6 +11,7 @@ describe('Rancid Tomatillos', () => {
   });
 
   it('Should be able to view a movie\'s title and rating', () => {
+    cy.visit('http://localhost:3000')
     cy.get('.moviesContainer > :nth-child(1)')
     cy.contains('Money Plane').should('be.visible')
     cy.contains('Average Rating: 6.9').should('be.visible')
@@ -16,6 +19,7 @@ describe('Rancid Tomatillos', () => {
 
   it('Should be able to view a movie\'s image', () => {
     // cy.get(':nth-child(1) > img')
+    cy.visit('http://localhost:3000')
     cy.get(':nth-child(1) > .moviePicture')
       .should('be.visible')
       .should(($img) => {
@@ -27,10 +31,15 @@ describe('Rancid Tomatillos', () => {
       // https://stackoverflow.com/questions/51246606/test-loading-of-image-in-cypress
   });
 
+  // Movie Display
   it('Should be able to click a movie\'s image and see its details', () => {
-    cy.get(':nth-child(1) > .moviePicture').click()
+    cy.visit('http://localhost:3000')
+    // cy.visit('http://localhost:3000/694919')
+    cy.get(':nth-child(1) > a > .moviePicture').click()
+    // cy.visit('http://localhost:3000/694919')
+    cy.url().should('include', '/694919')
     cy.contains('Title: Money Plane')
-    cy.contains('Average Rating: 6.9')
+    cy.contains('Average Rating: 6.875')
     cy.contains('Overview: A professional thief with $40 million in debt and his family\'s life on the line must commit one final heist - rob a futuristic airborne casino filled with the world\'s most dangerous criminals.')
     cy.contains('Release Date: 2020-09-29')
     cy.contains('Runtime: 82 minutes')
