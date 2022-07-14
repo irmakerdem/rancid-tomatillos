@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import './SearchBar.css'
 
 class SearchBar extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       movieTitle: ''
     }
@@ -18,16 +18,25 @@ class SearchBar extends Component {
 
 
   render() {
+    // console.log("hereeeee", this.props.movies)
+    // console.log("hereeeee2", this.props)
+    const movieTitles = this.props.movies.map(movie => {
+      console.log("movieeee", movie)
+      return (
+        <option value={movie.title}>{movie.title}</option>
+      )
+    })
+
     return (
       <form>
         <select>
           <option value="choose">Choose A Movie:</option>
+          {movieTitles}
           {/* <option value="fightClub">Fight Club</option> */}
         </select>
       </form>
     )
   }
-
 }
 
 export default SearchBar
