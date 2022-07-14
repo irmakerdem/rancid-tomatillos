@@ -32,7 +32,6 @@ describe('Rancid Tomatillos', () => {
   });
 
   // Movie Display
-
   it('Should be able to click a movie\'s image and see its details', () => {
     cy.visit('http://localhost:3000')
     // cy.visit('http://localhost:3000/694919')
