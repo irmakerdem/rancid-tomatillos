@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import Movies from './Movies';
 import MovieDisplay from './MovieDisplay';
 import { Route } from 'react-router-dom';
+import SearchBar from './SearchBar';
 
 class App extends Component {
   constructor() {
@@ -43,6 +44,7 @@ class App extends Component {
         <header className='siteHeader'>
           <h1 className='siteTitle'> 🍿 Rancid Tomatillos 🍿</h1>
         </header>
+        <SearchBar />
         { this.state.error && <p>{this.state.error}</p> }
         <Route
           exact path="/"     
