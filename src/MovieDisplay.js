@@ -20,8 +20,11 @@ class MovieDisplay extends Component {
   componentDidMount = () => {
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.id}`)
       .then(response => {
-        console.log("response", response)
-        return response.json()
+        if(!response.ok) {
+          throw new Error("Oopsies! Something went wrong 🤡")
+        } else {
+          return response.json()
+        }
       })
       .then(data => this.setState({ movie: data.movie }))
       .catch(error => {

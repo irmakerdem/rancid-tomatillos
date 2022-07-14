@@ -1,5 +1,4 @@
 import './App.css';
-// import movieData from './movieData';
 import React, {Component} from 'react';
 import Movies from './Movies';
 import MovieDisplay from './MovieDisplay';
@@ -10,8 +9,6 @@ class App extends Component {
     super();
     this.state = {
       movies: [],
-      // movies: movieData.movies,
-      movie: null,
       error: ''
     }
   }
@@ -19,18 +16,15 @@ class App extends Component {
   componentDidMount = () => {
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
       .then(response => {
-        // console.log(response)
         if(!response.ok) {
           throw new Error("Oopsies! Something went wrong 🤡")
         } else {
           return response.json()
         }
       })
-      // .then(data => this.setState({ ideas: data }))
       .then(data => this.setState({ movies: data.movies }))
       .catch(error => {
         this.setState({ error: "ERROR: " + error.message })
-        // this.setState({ error: 'An error occured. Please try again!' })
       })
   }
 
@@ -41,10 +35,6 @@ class App extends Component {
       .catch(error => {
         this.setState({ error: "ERROR: " + error.message })
       })
-  }
-
-  goHome = () => {
-    this.setState({ movie: null });
   }
 
   render() {
@@ -64,7 +54,6 @@ class App extends Component {
           render={({ match }) => <MovieDisplay id={match.params.movieId}/>
           }
         />
-        {/* {this.state.movie ? <MovieDisplay movie={this.state.movie} goHome={this.goHome} /> : <Movies movies={this.state.movies} findMovie={this.findMovie}/> } */}
       </div>
     )
   }
