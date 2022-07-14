@@ -20,10 +20,14 @@ class SearchBar extends Component {
   render() {
     // console.log("hereeeee", this.props.movies)
     // console.log("hereeeee2", this.props)
-    const movieTitles = this.props.movies.map(movie => {
-      console.log("movieeee", movie)
+    // this.props.movies is an array of objects
+    const movieTitles = this.props.movies.sort((a,b) => {
+      console.log("aaaaa", a.title)
+      return a.title.localeCompare(b.title)
+    }).map(movie => {
+      // console.log("movieeee", movie)
       return (
-        <option value={movie.title}>{movie.title}</option>
+        <option value={movie.title} key={movie.id}>{movie.title}</option>
       )
     })
 
