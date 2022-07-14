@@ -14,29 +14,29 @@ class App extends Component {
     }
   }
 
-  componentDidMount = () => {
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-      .then(response => {
-        if(!response.ok) {
-          throw new Error("Oopsies! Something went wrong 🤡")
-        } else {
-          return response.json()
-        }
-      })
-      .then(data => this.setState({ movies: data.movies }))
-      .catch(error => {
-        this.setState({ error: "ERROR: " + error.message })
-      })
-  }
+componentDidMount = () => {
+  fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+    .then(response => {
+      if(!response.ok) {
+        throw new Error("Oopsies! Something went wrong 🤡")
+      } else {
+        return response.json()
+      }
+    })
+    .then(data => this.setState({ movies: data.movies }))
+    .catch(error => {
+      this.setState({ error: "ERROR: " + error.message })
+    })
+}
 
-  findMovie = (id) => {
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
-      .then(response => response.json())
-      .then(data => this.setState({ movie: data.movie }))
-      .catch(error => {
-        this.setState({ error: "ERROR: " + error.message })
-      })
-  }
+  // findMovie = (id) => {
+  //   fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+  //     .then(response => response.json())
+  //     .then(data => this.setState({ movie: data.movie }))
+  //     .catch(error => {
+  //       this.setState({ error: "ERROR: " + error.message })
+  //     })
+  // }
 
   render() {
     return (
