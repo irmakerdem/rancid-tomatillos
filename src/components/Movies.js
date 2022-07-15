@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './Card';
-import './Movies.css';
+import '../styles/Movies.css';
 import SearchBar from './SearchBar';
 
 const Movies = ({movies, findMovie}) => {
@@ -11,6 +11,7 @@ const movieCards = movies.map(movie => {
     <Card
       title={movie.title}
       img={movie.poster_path}
+      // alt={movie.title}
       rating={movie.average_rating}
       key={movie.id}
       id={movie.id}
