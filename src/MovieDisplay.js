@@ -35,7 +35,7 @@ class MovieDisplay extends Component {
       return (
         <div className='movieBackdrop' style={{backgroundImage: `url(${this.state.movie.backdrop_path})`}}>
           <div className='movieContainer'>
-            <img className='moviePoster' src={this.state.movie.poster_path} />
+            <img className='moviePoster' src={this.state.movie.poster_path} alt={`${this.state.movie.title} poster`}/>
             <div className='movieInfo'>
               <p className='infoTitle'>Title: <span className='infoContent'> {this.state.movie.title}</span></p>
               <p className='infoTitle'>Average Rating: <span className='infoContent'>{this.state.movie.average_rating}</span></p>
