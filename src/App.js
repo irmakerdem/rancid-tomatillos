@@ -44,7 +44,7 @@ componentDidMount = () => {
         <header className='siteHeader'>
           <h1 className='siteTitle'> 🍿 Rancid Tomatillos 🍿</h1>
         </header>
-        <SearchBar movies={this.state.movies} />
+        {/* <SearchBar movies={this.state.movies} /> */}
         { this.state.error && <p>{this.state.error}</p> }
         <Route
           exact path="/"     
