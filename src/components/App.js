@@ -1,9 +1,8 @@
-import './App.css';
+import '../styles/App.css';
 import React, {Component} from 'react';
 import Movies from './Movies';
 import MovieDisplay from './MovieDisplay';
 import { Route } from 'react-router-dom';
-import SearchBar from './SearchBar';
 
 class App extends Component {
   constructor() {

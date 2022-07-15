@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './Card';
-import './Movies.css';
+import '../styles/Movies.css';
 import SearchBar from './SearchBar';
 
 const Movies = ({movies, findMovie}) => {

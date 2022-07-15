@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './MovieDisplay.css';
-import arrowIcon from './arrowIcon.png';
+import '../styles/MovieDisplay.css';
+import arrowIcon from '../assets/arrowIcon.png';
 import { Link } from 'react-router-dom';
 
 
@@ -49,7 +49,7 @@ class MovieDisplay extends Component {
                 <p className='infoTitle'>Tagline: <span className='infoContent'>{this.state.movie.tagline}</span></p>
                 <p className='infoTitle'>Genres: <span className='infoContent'>{this.state.movie.genres}</span></p>
                 <Link to="/">
-                  <input type="image" className='arrow' src={arrowIcon} />
+                  <input type="image" className='arrow' src={arrowIcon} alt='arrow icon'/>
                 </Link>
               </div>
             </div>
