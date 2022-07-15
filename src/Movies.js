@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './Card';
 import './Movies.css';
+import SearchBar from './SearchBar';
 
 const Movies = ({movies, findMovie}) => {
 
@@ -18,9 +19,12 @@ const movieCards = movies.map(movie => {
   )
 })
   return (
-    <div className='moviesContainer'>
-      {movieCards}
-    </div>
+    <>
+      <SearchBar movies={movies} />
+      <div className='moviesContainer'>
+        {movieCards}
+      </div>
+    </>
   )
 
 }
