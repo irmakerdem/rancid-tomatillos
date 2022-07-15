@@ -10,11 +10,13 @@ class App extends Component {
     super();
     this.state = {
       movies: [],
-      error: ''
+      error: '',
+      isLoading: false
     }
   }
 
 componentDidMount = () => {
+  this.setState({ isLoading: true} )
   fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
     .then(response => {
       if(!response.ok) {
@@ -23,7 +25,7 @@ componentDidMount = () => {
         return response.json()
       }
     })
-    .then(data => this.setState({ movies: data.movies }))
+    .then(data => this.setState({ movies: data.movies, isLoading: false }))
     .catch(error => {
       this.setState({ error: "ERROR: " + error.message })
     })
@@ -45,6 +47,7 @@ componentDidMount = () => {
           <h1 className='siteTitle'> 🍿 Rancid Tomatillos 🍿</h1>
         </header>
         {/* <SearchBar movies={this.state.movies} /> */}
+        { this.state.isLoading && <p>⏳ Loading...</p> }
         { this.state.error && <p>{this.state.error}</p> }
         <Route
           exact path="/"     

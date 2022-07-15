@@ -11,13 +11,15 @@ class MovieDisplay extends Component {
     super(props);
     this.state = {
       movie: {},
-      error: ''
+      error: '',
+      isLoading: false
     }
     console.log("movie", this.state.movie)
     console.log("prop test", this.props.id)
   }
 
   componentDidMount = () => {
+    this.setState({ isLoading: false })
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.id}`)
       .then(response => {
         if(!response.ok) {
@@ -26,30 +28,33 @@ class MovieDisplay extends Component {
           return response.json()
         }
       })
-      .then(data => this.setState({ movie: data.movie }))
+      .then(data => this.setState({ movie: data.movie, isLoading: false }))
       .catch(error => {
         this.setState({ error: "ERROR: " + error.message })
       })
    }
     render() {
       return (
-        <div className='movieBackdrop' style={{backgroundImage: `url(${this.state.movie.backdrop_path})`}}>
-          <div className='movieContainer'>
-            <img className='moviePoster' src={this.state.movie.poster_path} alt={`${this.state.movie.title} poster`}/>
-            <div className='movieInfo'>
-              <p className='infoTitle'>Title: <span className='infoContent'> {this.state.movie.title}</span></p>
-              <p className='infoTitle'>Average Rating: <span className='infoContent'>{this.state.movie.average_rating}</span></p>
-              <p className='infoTitle'>Overview: <span className='infoContent'>{this.state.movie.overview}</span></p>
-              <p className='infoTitle'>Release Date: <span className='infoContent'>{this.state.movie.release_date}</span></p>
-              <p className='infoTitle'>Runtime: <span className='infoContent'>{this.state.movie.runtime} minutes</span></p>
-              <p className='infoTitle'>Tagline: <span className='infoContent'>{this.state.movie.tagline}</span></p>
-              <p className='infoTitle'>Genres: <span className='infoContent'>{this.state.movie.genres}</span></p>
-              <Link to="/">
-                <input type="image" className='arrow' src={arrowIcon} />
-              </Link>
+        <>
+          { this.state.isLoading && <p>⏳ Loading...</p> }
+          <div className='movieBackdrop' style={{backgroundImage: `url(${this.state.movie.backdrop_path})`}}>
+            <div className='movieContainer'>
+              <img className='moviePoster' src={this.state.movie.poster_path} alt={`${this.state.movie.title} poster`}/>
+              <div className='movieInfo'>
+                <p className='infoTitle'>Title: <span className='infoContent'> {this.state.movie.title}</span></p>
+                <p className='infoTitle'>Average Rating: <span className='infoContent'>{this.state.movie.average_rating}</span></p>
+                <p className='infoTitle'>Overview: <span className='infoContent'>{this.state.movie.overview}</span></p>
+                <p className='infoTitle'>Release Date: <span className='infoContent'>{this.state.movie.release_date}</span></p>
+                <p className='infoTitle'>Runtime: <span className='infoContent'>{this.state.movie.runtime} minutes</span></p>
+                <p className='infoTitle'>Tagline: <span className='infoContent'>{this.state.movie.tagline}</span></p>
+                <p className='infoTitle'>Genres: <span className='infoContent'>{this.state.movie.genres}</span></p>
+                <Link to="/">
+                  <input type="image" className='arrow' src={arrowIcon} />
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+        </>
       )
     }
   }
