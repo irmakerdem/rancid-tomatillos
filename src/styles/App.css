@@ -1,3 +1,7 @@
+* {
+  font-family: fantasy;
+}
+
 .siteHeader {
   height: 75px;
   background-color:#F8333C;
@@ -9,9 +13,8 @@
 }
 
 .siteTitle {
-  font-family: fantasy;
   text-align: center;
-  /* color: #faf9f6d8; */
+  font-size: 45px;
   color: white;
   padding-top: 10px;
 }

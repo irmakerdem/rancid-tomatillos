@@ -1,9 +1,6 @@
 .movieBackdrop {
   background-size: cover;
   background-repeat: no-repeat;
-  /* opacity: 0.5; */
-  /* height: 100vh;
-  width: 100vw; */
 }
 
 .movieContainer {
@@ -22,32 +19,19 @@
 .movieInfo {
   height: 400px;
   width: 50%;
-  /* background-color: #FCAB10; */
   background-image: linear-gradient(to bottom right, #FCAB10, white);
-  /* background-image: linear-gradient(to bottom left, #44AF69, #FCAB10); */
-  /* background-image: linear-gradient(to bottom left, #44AF69, #2B9EB3); */
   border-radius: 7px;
   padding: 5px 10px 5px 15px;
-  /* display: flex;
-  flex-direction: column; */
-  /* align-content: center; */
-  /* color: white; */
+
 }
 
 .infoTitle {
   font-size: 17px;
-  font-family: fantasy;
   font-weight: bold;
   margin: 5px 0px 5px 0px;
 }
 
 .infoContent {
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight: normal;
 }
-
-/* .arrow {
-  height: 20px;
-  width: 20px;
-} */
