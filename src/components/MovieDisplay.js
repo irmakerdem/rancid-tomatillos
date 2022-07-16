@@ -12,8 +12,6 @@ class MovieDisplay extends Component {
       error: '',
       isLoading: false
     }
-    // console.log("movie", this.state.movie)
-    // console.log("prop test", this.props.id)
   }
 
   componentDidMount = () => {
@@ -40,9 +38,11 @@ class MovieDisplay extends Component {
                 <p className='infoTitle'>Runtime: <span className='infoContent'>{this.state.movie.runtime} minutes</span></p>
                 <p className='infoTitle'>Tagline: <span className='infoContent'>{this.state.movie.tagline}</span></p>
                 <p className='infoTitle'>Genres: <span className='infoContent'>{this.state.movie.genres}</span></p>
-                <Link to="/">
-                  <input type="image" className='arrow' src={arrowIcon} alt='arrow icon'/>
-                </Link>
+                <div className="arrow-flex">
+                  <Link to="/">
+                    <input type="image" className='arrow' src={arrowIcon} alt='arrow icon'/>
+                  </Link>
+                </div>
               </section>
             </div>
           </div>

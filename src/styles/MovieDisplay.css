@@ -17,7 +17,7 @@
 }
 
 .movieInfo {
-  height: 400px;
+  height: 420px;
   width: 50%;
   background-image: linear-gradient(to bottom right, #FCAB10, white);
   border-radius: 7px;
@@ -34,4 +34,14 @@
 .infoContent {
   font-size: 15px;
   font-weight: normal;
+}
+
+.arrow-flex {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.arrow {
+  height: 30px;
+  width: 30px;
 }
