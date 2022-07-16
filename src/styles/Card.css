@@ -11,6 +11,11 @@
   background-image: linear-gradient(to bottom left, #44AF69, #2B9EB3);
   padding: 25px 0px 17px 0px;
   height: 435px;
+  border: rgb(95, 93, 93) 2px solid
+}
+
+.card:hover {
+  transform: scale(1.2);
 }
 
 .moviePicture {
