@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import '../styles/SearchBar.css'
+import '../styles/Dropdown.css'
 import { Link } from 'react-router-dom';
 
-class SearchBar extends Component {
+class Dropdown extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -52,4 +52,4 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar
+export default Dropdown;

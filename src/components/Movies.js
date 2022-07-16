@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './Card';
 import '../styles/Movies.css';
-import SearchBar from './SearchBar';
+import Dropdown from './Dropdown';
 
 const Movies = ({movies, findMovie}) => {
 
@@ -21,7 +21,7 @@ const movieCards = movies.map(movie => {
 })
   return (
     <>
-      <SearchBar movies={movies} />
+      <Dropdown movies={movies} />
       <div className='moviesContainer'>
         {movieCards}
       </div>
