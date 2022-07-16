@@ -9,5 +9,13 @@
 }
 
 html {
-  background-color: #faf9f6d8;
+  /* background-color: #faf9f6d8; */
+  background-color: black;
+}
+
+.dropdown {
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+  background: black;
 }

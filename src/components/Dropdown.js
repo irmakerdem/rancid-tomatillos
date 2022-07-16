@@ -41,7 +41,7 @@ class Dropdown extends Component {
     return (
       <form>
         <select onChange={(event) => this.handleChange(event)}>
-          <option value="choose">Choose A Movie:</option>
+          <option value="choose">🎥 Choose A Movie:</option>
           {movieTitles}
         </select>
         <Link to={`/${this.state.id}`}>

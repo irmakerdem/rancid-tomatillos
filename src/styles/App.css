@@ -3,18 +3,17 @@
 }
 
 .siteHeader {
-  height: 75px;
+  height: 120px;
   background-color:#F8333C;
   background-image: linear-gradient(to bottom right, #F8333C, #FCAB10);
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #FCAB10;
 }
 
 .siteTitle {
   text-align: center;
-  font-size: 45px;
+  font-size: 50px;
   color: white;
   padding-top: 10px;
 }
