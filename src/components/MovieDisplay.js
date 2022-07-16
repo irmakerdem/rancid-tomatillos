@@ -33,7 +33,7 @@ class MovieDisplay extends Component {
           <div className='movieBackdrop' style={{backgroundImage: `url(${this.state.movie.backdrop_path})`}}>
             <div className='movieContainer'>
               <img className='moviePoster' src={this.state.movie.poster_path} alt={`${this.state.movie.title} poster`}/>
-              <div className='movieInfo'>
+              <section className='movieInfo'>
                 <p className='infoTitle'>Title: <span className='infoContent'> {this.state.movie.title}</span></p>
                 <p className='infoTitle'>Average Rating: <span className='infoContent'>{this.state.movie.average_rating}</span></p>
                 <p className='infoTitle'>Overview: <span className='infoContent'>{this.state.movie.overview}</span></p>
@@ -44,7 +44,7 @@ class MovieDisplay extends Component {
                 <Link to="/">
                   <input type="image" className='arrow' src={arrowIcon} alt='arrow icon'/>
                 </Link>
-              </div>
+              </section>
             </div>
           </div>
         </>
