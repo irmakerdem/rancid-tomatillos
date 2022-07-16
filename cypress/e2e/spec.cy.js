@@ -44,6 +44,8 @@ describe('Rancid Tomatillos', () => {
       .should(($img) => {
         expect($img[0].naturalHeight).to.be.greaterThan(0)
       })
+      .should('have.attr', 'src', 'https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg')
+      .should('have.attr', 'alt', 'Money Plane poster')
       // https://stackoverflow.com/questions/51246606/test-loading-of-image-in-cypress
   });
 
@@ -66,15 +68,20 @@ describe('Rancid Tomatillos', () => {
 
 
   // Movie Display
-  it('Should be able to show a loading message if second page download speed is slow', () => {
+  it('Should be able to display a loading message if second page download speed is slow', () => {
     cy.visit('http://localhost:3000')
     cy.contains('Loading...')
   });
 
-  it('Should be able to click a movie\'s image and see its details on the second page', () => {
+  it('Should be able to click an image on home page and update the url', () => {
     cy.visit('http://localhost:3000')
     cy.get(':nth-child(1) > a > .moviePicture').click()
-    // cy.visit('http://localhost:3000/694919')
+    cy.url().should('include', '/694919')
+  });
+
+  it('Should be able to display movie details when movie image is clicked on the second page', () => {
+    cy.visit('http://localhost:3000')
+    cy.get(':nth-child(1) > a > .moviePicture').click()
     cy.url().should('include', '/694919')
     cy.contains('Title: Money Plane')
     cy.contains('Average Rating: 6.875')
@@ -85,17 +92,15 @@ describe('Rancid Tomatillos', () => {
     cy.contains('Genres: Action')
   });
 
-  it('Should be able to view a movie\'s backdrop image', () => {
+  it('Should be able to display a movie\'s backdrop image', () => {
     cy.visit('http://localhost:3000')
     cy.get(':nth-child(1) > a > .moviePicture').click()
     cy.url().should('include', '/694919')
     cy.get('.app').should('have.css', 'background-image')
-    // .should('include', '.jpg')
-    cy.get('.app').find('img').should('be.visible')
   });
   https://stackoverflow.com/questions/64023960/cypress-how-can-i-check-if-the-background-changes-in-a-div
 
-  it('Should be able to view a movie\'s small image on the second page', () => {
+  it('Should be able to display a movie\'s poster image on the second page', () => {
     cy.get('.moviePoster')
       .should('be.visible')
       .should(($img) => {
@@ -104,17 +109,18 @@ describe('Rancid Tomatillos', () => {
       .should(($img) => {
         expect($img[0].naturalHeight).to.be.greaterThan(0)
       })
+      .should('have.attr', 'src', 'https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg')
+      .should('have.attr', 'alt', 'Money Plane poster')
   });
     
-  it('Should show an arrow on the second page', () => {
-    cy.get('input[type="image"]').should('be.visible')
+  it('Should display an arrow on the second page', () => {
+    cy.get('.arrow').should('be.visible')
+    .should('have.attr', 'alt', 'arrow icon')
   });
 
   it('Should be able to click the arrow on the second page and go to home page', () => {
-    cy.get('input[type="image"]').click()
-    // cy.url().should('include', '/')
-    cy.contains('Rancid Tomatillos')
-    cy.contains('Money Plane')
+    cy.get('.arrow').click()
+    cy.url().should('eq', 'http://localhost:3000/')
     cy.get('form').contains('Choose A Movie:')
     cy.get('form').contains('GO!')
   });
@@ -127,66 +133,11 @@ describe('Rancid Tomatillos', () => {
     cy.contains("Oopsies! Something went wrong 🤡")
   });
 
-  //test for a 404 error???
-
-
-
-
- 
-
-
-  // it('should be able to select the email and password inputs and fill them with the corresponding values', () => {
-  //   cy.get('input[type="email"]')
-  //     .type('leta@turing.io')
-  //     .should('have.value', 'leta@turing.io')
-  //     .get('input[type="password"]')
-  //     .type('keane20')
-  //     .should('have.value', 'keane20')
-
-  //     // cy.get('input[type="email"]')
-  //     // .type('travis@turing.io')
-  //     // .should('have.value', 'travis@turing.io')
-  //     // .get('input[type="password"]')
-  //     // .type('keane20')
-  //     // .should('have.value', 'keane20')
-  // });
-
-  // it('should display an error message when a user clicks the Submit button without filling both inputs', () => {
-  //   cy.get('button').click()
-  //   cy.get('p').contains('Please fill out both inputs')
-  // });
-
-  // it('should be able to fill out the email and password and click Submit, directing the user to a different page', () => {
-  //   cy.intercept('POST', 'http://localhost:3001/api/v1/login', {
-  //       statusCode: 201,
-  //       body: {
-  //         id: 2,
-  //         image: "https://ca.slack-edge.com/T029P2S9M-U37MJAV0T-007ccf2f5eb2-512",
-  //         name: "Leta Keane"
-  //       }
-  //     })
-  //     .get('input[type="email"]').type('leta@turing.io')
-  //     .get('input[type="password"]').type('keane20')
-  //     .get('button').click()
-  //     .url().should('include', '/dashboard')
-  // });
-
-  // it('should display an error message if I submit an incorrect email and password', () => {
-  //   cy.intercept({
-  //     method: 'POST',
-  //     url: 'http://localhost:3001/api/v1/login'
-  //   },
-  //   {
-  //     statusCode: 401,
-  //     body: { 
-  //       message: `Email and password do not match.  Please try again.` 
-  //     }
-  //   })
-  //   .get('input[type="email"]')
-  //   .type('leta@turing.io')
-  //   .get('input[type="password"]')
-  //   .type('YOLO')
-  //   .get('button').click()
-  //   .get('p').should('contain', 'Email and password do not match.  Please try again.')
-  // });
+  it('Should be able to show a message when a 404 error occurs on the second page', () => {
+    cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+      statusCode: 404
+    })
+    cy.visit('http://localhost:3000')
+    cy.contains("Oopsies! Something went wrong 🤡")
+  });
 });
