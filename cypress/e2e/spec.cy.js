@@ -1,18 +1,19 @@
 /// <reference types="cypress" />
 
 describe('Rancid Tomatillos', () => {
-  // beforeEach(() => {
-  //   cy.visit('http://localhost:3000');
-  // .contains('header','Rancid Tomatillos')
-  // });
-
-  it('Should be go to home page and display the header', () => {
+  beforeEach(() => {
+    cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
     cy.visit('http://localhost:3000')
       .contains('header','Rancid Tomatillos')
   });
 
+  // it('Should be go to home page and display the header', () => {
+  //   cy.visit('http://localhost:3000')
+  //     .contains('header','Rancid Tomatillos')
+  // });
+
   it('Should be able to display all movie cards on home page', () => {
-    cy.visit('http://localhost:3000').contains('header','Rancid Tomatillos')
+    // cy.visit('http://localhost:3000').contains('header','Rancid Tomatillos')
     cy.get('.moviesContainer').find('.card').should('have.length', '40')
   });
 
