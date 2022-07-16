@@ -29,6 +29,7 @@ class MovieDisplay extends Component {
       return (
         <>
           { this.state.isLoading && <p>⏳ Loading...</p> }
+          { this.state.error && <p>{this.state.error}</p> }
           <div className='movieBackdrop' style={{backgroundImage: `url(${this.state.movie.backdrop_path})`}}>
             <div className='movieContainer'>
               <img className='moviePoster' src={this.state.movie.poster_path} alt={`${this.state.movie.title} poster`}/>
