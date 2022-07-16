@@ -32,7 +32,7 @@ class MovieDisplay extends Component {
               <img className='moviePoster' src={this.state.movie.poster_path} alt={`${this.state.movie.title} poster`} style={{opacity: '1'}}/>
               <section className='movieInfo'>
                 <p className='infoTitle'>Title: <span className='infoContent'> {this.state.movie.title}</span></p>
-                <p className='infoTitle'>Average Rating: <span className='infoContent'>{this.state.movie.average_rating}</span></p>
+                <p className='infoTitle'>Average Rating: <span className='infoContent'>{Number(this.state.movie.average_rating).toFixed(1)}</span></p>
                 <p className='infoTitle'>Overview: <span className='infoContent'>{this.state.movie.overview}</span></p>
                 <p className='infoTitle'>Release Date: <span className='infoContent'>{this.state.movie.release_date}</span></p>
                 <p className='infoTitle'>Runtime: <span className='infoContent'>{this.state.movie.runtime} minutes</span></p>
