@@ -18,14 +18,7 @@ class MovieDisplay extends Component {
 
   componentDidMount = () => {
     this.setState({ isLoading: true })
-    // fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.id}`)
-    //   .then(response => {
-    //     if(!response.ok) {
-    //       throw new Error("Oopsies! Something went wrong 🤡")
-    //     } else {
-    //       return response.json()
-    //     }
-    //   })
+
     getMovieDetails(this.props.id)
       .then(data => this.setState({ movie: data.movie, isLoading: false }))
       .catch(error => {

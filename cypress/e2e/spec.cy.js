@@ -3,21 +3,26 @@
 describe('Rancid Tomatillos', () => {
   // beforeEach(() => {
   //   cy.visit('http://localhost:3000');
+  // .contains('header','Rancid Tomatillos')
   // });
 
-  it('Should be able to visit the home page and render the header', () => {
+  it('Should be go to home page and display the header', () => {
     cy.visit('http://localhost:3000')
-      .contains('Rancid Tomatillos')
+      .contains('header','Rancid Tomatillos')
   });
 
-  it('Should be able to show a loading message if home page download speed is slow', () => {
+  it('Should be able to display all movie cards on home page', () => {
+    cy.visit('http://localhost:3000').contains('header','Rancid Tomatillos')
+    cy.get('.moviesContainer').find('.card').should('have.length', '40')
+  });
+
+  it('Should be able to display a loading message if home page download speed is slow', () => {
     cy.visit('http://localhost:3000')
     cy.contains('Loading...')
   });
 
-  it('Should be able to view any movie\'s title and rating on the home page', () => {
+  it('Should be able to display any movie\'s title and rating on the home page', () => {
     cy.visit('http://localhost:3000')
-
     cy.get('.moviesContainer > :nth-child(1)')
     cy.contains('Money Plane').should('be.visible')
     cy.contains('Average Rating: 6.9').should('be.visible')
@@ -28,7 +33,7 @@ describe('Rancid Tomatillos', () => {
     cy.contains('Average Rating: 4.9').should('be.visible')
   });
 
-  it('Should be able to view a movie\'s image on the home page', () => {
+  it('Should be able to display a movie\'s image on the home page', () => {
     // cy.get(':nth-child(1) > img')
     cy.visit('http://localhost:3000')
     cy.get(':nth-child(1) > .moviePicture')
