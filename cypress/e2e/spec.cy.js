@@ -51,22 +51,26 @@ describe('Rancid Tomatillos', () => {
 
 
   //NEEDS TO BE UPDATED!!!!!
-  it('Should be able to select a movie by title on the home page\'s dropdown', () => {
-    cy.get('form').contains('Choose A Movie:')
-    cy.get('form').contains('GO!')
-    // cy.get('select').contains('Peninsula')
-    // .click()
-    // cy.get('form').should('have.value', 'Peninsula')
-    // cy.get('[data-layer="Content"]').trigger('mousemove').click()
-    // cy.get('select').trigger('mousemove').click()
+  // it('Should be able to select a movie by title on the home page\'s dropdown', () => {
+  //   cy.get('form').contains('Choose A Movie:')
+  //   cy.get('form').contains('GO!')
+  //   // cy.get('select').contains('Peninsula')
+  //   // .click()
+  //   // cy.get('form').should('have.value', 'Peninsula')
+  //   // cy.get('[data-layer="Content"]').trigger('mousemove').click()
+  //   // cy.get('select').trigger('mousemove').click()
 
-    // https://stackoverflow.com/questions/48362422/select-dropdownlist-item-using-cypress
+  //   // https://stackoverflow.com/questions/48362422/select-dropdownlist-item-using-cypress
+  // });
+
+  it('Should be able to select a movie by title on the home page\'s dropdown and be directed to the movie details page', () => {
+    cy.visit('http://localhost:3000')
+    cy.get('form').find('select').select('Money Plane').should('have.value', '694919')
+    cy.get('button').click()
+    cy.url().should('include', '/694919')
   });
 
-
-
-
-
+  
   // Movie Display
   it('Should be able to display a loading message if second page download speed is slow', () => {
     cy.visit('http://localhost:3000')
