@@ -5,19 +5,30 @@ describe('Rancid Tomatillos', () => {
   //   cy.visit('http://localhost:3000');
   // });
 
-  it('Should be able to visit the page and renders the header', () => {
+  it('Should be able to visit the home page and render the header', () => {
     cy.visit('http://localhost:3000')
       .contains('Rancid Tomatillos')
   });
 
-  it('Should be able to view a movie\'s title and rating', () => {
+  it('Should be able to show a loading message if home page download speed is slow', () => {
     cy.visit('http://localhost:3000')
+    cy.contains('Loading...')
+  });
+
+  it('Should be able to view any movie\'s title and rating on the home page', () => {
+    cy.visit('http://localhost:3000')
+
     cy.get('.moviesContainer > :nth-child(1)')
     cy.contains('Money Plane').should('be.visible')
     cy.contains('Average Rating: 6.9').should('be.visible')
+
+    cy.visit('http://localhost:3000')
+    cy.get('.moviesContainer > :nth-child(9)')
+    cy.contains('The Owners').should('be.visible')
+    cy.contains('Average Rating: 4.9').should('be.visible')
   });
 
-  it('Should be able to view a movie\'s image', () => {
+  it('Should be able to view a movie\'s image on the home page', () => {
     // cy.get(':nth-child(1) > img')
     cy.visit('http://localhost:3000')
     cy.get(':nth-child(1) > .moviePicture')
@@ -31,10 +42,32 @@ describe('Rancid Tomatillos', () => {
       // https://stackoverflow.com/questions/51246606/test-loading-of-image-in-cypress
   });
 
+
+  //NEEDS TO BE UPDATED!!!!!
+  it('Should be able to select a movie by title on the home page\'s dropdown', () => {
+    cy.get('form').contains('Choose A Movie:')
+    cy.get('form').contains('GO!')
+    // cy.get('select').contains('Peninsula')
+    // .click()
+    // cy.get('form').should('have.value', 'Peninsula')
+    // cy.get('[data-layer="Content"]').trigger('mousemove').click()
+    // cy.get('select').trigger('mousemove').click()
+
+    // https://stackoverflow.com/questions/48362422/select-dropdownlist-item-using-cypress
+  });
+
+
+
+
+
   // Movie Display
-  it('Should be able to click a movie\'s image and see its details', () => {
+  it('Should be able to show a loading message if second page download speed is slow', () => {
     cy.visit('http://localhost:3000')
-    // cy.visit('http://localhost:3000/694919')
+    cy.contains('Loading...')
+  });
+
+  it('Should be able to click a movie\'s image and see its details on the second page', () => {
+    cy.visit('http://localhost:3000')
     cy.get(':nth-child(1) > a > .moviePicture').click()
     // cy.visit('http://localhost:3000/694919')
     cy.url().should('include', '/694919')
@@ -47,7 +80,17 @@ describe('Rancid Tomatillos', () => {
     cy.contains('Genres: Action')
   });
 
-  it('Should be able to view a movie\'s small image', () => {
+  it('Should be able to view a movie\'s backdrop image', () => {
+    cy.visit('http://localhost:3000')
+    cy.get(':nth-child(1) > a > .moviePicture').click()
+    cy.url().should('include', '/694919')
+    cy.get('.app').should('have.css', 'background-image')
+    // .should('include', '.jpg')
+    cy.get('.app').find('img').should('be.visible')
+  });
+  https://stackoverflow.com/questions/64023960/cypress-how-can-i-check-if-the-background-changes-in-a-div
+
+  it('Should be able to view a movie\'s small image on the second page', () => {
     cy.get('.moviePoster')
       .should('be.visible')
       .should(($img) => {
@@ -58,44 +101,33 @@ describe('Rancid Tomatillos', () => {
       })
   });
     
-  //this does not currently work!!
-  // it('Should be able to view a movie\'s backdrop image', () => {
-  //   cy.get('.movieContainer')
-  //     .should('be.visible')
-  //     .should(($img) => {
-  //       expect($img[0].naturalWidth).to.be.greaterThan(0)
-  //     })
-  // });
-
-  it('Should show an arrow', () => {
-    cy.get('input[type="image"]')
-    .should('be.visible')
+  it('Should show an arrow on the second page', () => {
+    cy.get('input[type="image"]').should('be.visible')
   });
 
-  it('Should be able to click the arrow', () => {
+  it('Should be able to click the arrow on the second page and go to home page', () => {
     cy.get('input[type="image"]').click()
+    // cy.url().should('include', '/')
+    cy.contains('Rancid Tomatillos')
+    cy.contains('Money Plane')
+    cy.get('form').contains('Choose A Movie:')
+    cy.get('form').contains('GO!')
   });
 
-  //get updated url to then test for
-  // it('Should be able to click the image and see things', () => {
-  //   cy.get('').click()
-  //   cy.url().should('include', '/dashboard')
-  // });
-
-  //stubbing
-
-   it('Should be able to test for a 500 error', () => {
+   it('Should be able to show a message when a 500 error occurs on the second page', () => {
     cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
       statusCode: 500
     })
     cy.visit('http://localhost:3000')
     cy.contains("Oopsies! Something went wrong 🤡")
   });
-  //error handling testing?
 
-  //user can enter inputs (or dropdown) and click GO button
+  //test for a 404 error???
 
-  //user see movies based on search
+
+
+
+ 
 
 
   // it('should be able to select the email and password inputs and fill them with the corresponding values', () => {

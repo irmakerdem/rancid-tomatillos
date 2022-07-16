@@ -2,32 +2,31 @@ import React, { Component } from 'react';
 import '../styles/MovieDisplay.css';
 import arrowIcon from '../assets/arrowIcon.png';
 import { Link } from 'react-router-dom';
-
+import { getMovieDetails } from '../apiCalls';
 
 class MovieDisplay extends Component {
-  
   constructor(props) {
-    
     super(props);
     this.state = {
       movie: {},
       error: '',
       isLoading: false
     }
-    console.log("movie", this.state.movie)
-    console.log("prop test", this.props.id)
+    // console.log("movie", this.state.movie)
+    // console.log("prop test", this.props.id)
   }
 
   componentDidMount = () => {
-    this.setState({ isLoading: false })
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.id}`)
-      .then(response => {
-        if(!response.ok) {
-          throw new Error("Oopsies! Something went wrong 🤡")
-        } else {
-          return response.json()
-        }
-      })
+    this.setState({ isLoading: true })
+    // fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.id}`)
+    //   .then(response => {
+    //     if(!response.ok) {
+    //       throw new Error("Oopsies! Something went wrong 🤡")
+    //     } else {
+    //       return response.json()
+    //     }
+    //   })
+    getMovieDetails(this.props.id)
       .then(data => this.setState({ movie: data.movie, isLoading: false }))
       .catch(error => {
         this.setState({ error: "ERROR: " + error.message })
