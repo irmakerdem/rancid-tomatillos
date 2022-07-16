@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import Movies from './Movies';
 import MovieDisplay from './MovieDisplay';
 import { Route } from 'react-router-dom';
+import { getMovies } from '../apiCalls';
 
 class App extends Component {
   constructor() {
@@ -16,14 +17,15 @@ class App extends Component {
 
 componentDidMount = () => {
   this.setState({ isLoading: true} )
-  fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-    .then(response => {
-      if(!response.ok) {
-        throw new Error("Oopsies! Something went wrong 🤡")
-      } else {
-        return response.json()
-      }
-    })
+  // fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+  //   .then(response => {
+  //     if(!response.ok) {
+  //       throw new Error("Oopsies! Something went wrong 🤡")
+  //     } else {
+  //       return response.json()
+  //     }
+  //   })
+  getMovies()
     .then(data => this.setState({ movies: data.movies, isLoading: false }))
     .catch(error => {
       this.setState({ error: "ERROR: " + error.message })
