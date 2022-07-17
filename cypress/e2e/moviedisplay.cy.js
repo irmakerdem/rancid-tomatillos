@@ -11,7 +11,7 @@ describe('Movie display page', () => {
 
   it('Should be able to display a movie\'s details', () => {
     cy.contains('Title: Money Plane')
-    cy.contains('Average Rating: 6.875')
+    cy.contains('Average Rating: 6.9')
     cy.contains('Overview: A professional thief with $40 million in debt and his family\'s life on the line must commit one final heist - rob a futuristic airborne casino filled with the world\'s most dangerous criminals.')
     cy.contains('Release Date: 2020-09-29')
     cy.contains('Runtime: 82 minutes')
