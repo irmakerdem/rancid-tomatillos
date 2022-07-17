@@ -20,4 +20,5 @@ select:hover, button:hover {
 
 button:hover {
   background: linear-gradient(to bottom right, #F8333C, #FCAB10);
+  transform: scale(1.2);
 }
