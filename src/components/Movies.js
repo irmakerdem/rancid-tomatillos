@@ -3,7 +3,8 @@ import Card from './Card';
 import '../styles/Movies.css';
 import Dropdown from './Dropdown';
 
-const Movies = ({movies, findMovie}) => {
+const Movies = ({ movies }) => {
+
   const movieCards = movies.map(movie => {
     return (
       <Card
@@ -12,10 +13,10 @@ const Movies = ({movies, findMovie}) => {
         rating={movie.average_rating}
         key={movie.id}
         id={movie.id}
-        findMovie={findMovie}
       />
     )
   })
+
   return (
     <>
       <div className='dropdown'>
