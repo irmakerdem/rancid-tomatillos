@@ -4,6 +4,14 @@
   font-family: Montserrat
 }
 
+.loading {
+  color: white;
+}
+
+.error {
+  color: red;
+}
+
 .siteHeader {
   height: 120px;
   background-color:#F8333C;

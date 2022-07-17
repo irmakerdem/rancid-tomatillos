@@ -1,5 +1,5 @@
 import '../styles/App.css';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Movies from './Movies';
 import MovieDisplay from './MovieDisplay';
 import { Route } from 'react-router-dom';
@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    this.setState({ isLoading: true} )
+    this.setState({ isLoading: true })
     getMovies()
       .then(data => this.setState({ movies: data.movies, isLoading: false }))
       .catch(error => {
@@ -30,16 +30,16 @@ class App extends Component {
         <header className='siteHeader'>
           <h1 className='siteTitle'>🍿 Rancid Tomatillos 🍿</h1>
         </header>
-        { this.state.isLoading && <p>⏳ Loading...</p> }
-        { this.state.error && <p>{this.state.error}</p> }
+        {this.state.isLoading && <p className='loading'>⏳ Loading...</p>}
+        {this.state.error && <p className='error'>{this.state.error}</p>}
         <Route
           exact path="/"     
-          render={() => <Movies movies={this.state.movies}/>
+          render={() => <Movies movies={this.state.movies} />
           }
         />
         <Route
           exact path="/:movieId"
-          render={({ match }) => <MovieDisplay id={match.params.movieId}/>
+          render={({ match }) => <MovieDisplay id={match.params.movieId} />
           }
         />
       </div>
