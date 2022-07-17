@@ -1,0 +1,23 @@
+select, button {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+button {
+  border-radius: 15%;
+  border: none;
+  margin-left: 15px;
+}
+
+option {
+  text-align: center;
+  line-height: 500px;
+}
+
+select:hover, button:hover {
+  cursor: pointer;
+}
+
+button:hover {
+  background: linear-gradient(to bottom right, #F8333C, #FCAB10);
+}

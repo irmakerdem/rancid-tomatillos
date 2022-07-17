@@ -17,7 +17,7 @@ describe('Movie display page', () => {
     cy.contains('Runtime: 82 minutes')
     cy.contains('Tagline:')
     cy.contains('Genres: Action')
-    });
+  });
 
   it('Should be able to display a movie\'s backdrop image', () => {
     cy.get('.app').should('have.css', 'background-image')

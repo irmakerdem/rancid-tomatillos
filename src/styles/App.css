@@ -1,17 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+* {
+  font-family: Montserrat
+}
+
 .siteHeader {
-  height: 75px;
+  height: 120px;
   background-color:#F8333C;
   background-image: linear-gradient(to bottom right, #F8333C, #FCAB10);
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #FCAB10;
 }
 
 .siteTitle {
-  font-family: fantasy;
   text-align: center;
-  /* color: #faf9f6d8; */
+  font-size: 50px;
   color: white;
   padding-top: 10px;
 }

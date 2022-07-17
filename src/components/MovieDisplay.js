@@ -12,8 +12,6 @@ class MovieDisplay extends Component {
       error: '',
       isLoading: false
     }
-    // console.log("movie", this.state.movie)
-    // console.log("prop test", this.props.id)
   }
 
   componentDidMount = () => {
@@ -28,23 +26,25 @@ class MovieDisplay extends Component {
     render() {
       return (
         <>
-          { this.state.isLoading && <p>⏳ Loading...</p> }
           { this.state.error && <p>{this.state.error}</p> }
           <div className='movieBackdrop' style={{backgroundImage: `url(${this.state.movie.backdrop_path})`}}>
             <div className='movieContainer'>
-              <img className='moviePoster' src={this.state.movie.poster_path} alt={`${this.state.movie.title} poster`}/>
-              <div className='movieInfo'>
+              <img className='moviePoster' src={this.state.movie.poster_path} alt={`${this.state.movie.title} poster`} style={{opacity: '1'}}/>
+              <section className='movieInfo'>
                 <p className='infoTitle'>Title: <span className='infoContent'> {this.state.movie.title}</span></p>
-                <p className='infoTitle'>Average Rating: <span className='infoContent'>{this.state.movie.average_rating}</span></p>
+                <p className='infoTitle'>Average Rating: <span className='infoContent'>{Number(this.state.movie.average_rating).toFixed(1)}</span></p>
                 <p className='infoTitle'>Overview: <span className='infoContent'>{this.state.movie.overview}</span></p>
                 <p className='infoTitle'>Release Date: <span className='infoContent'>{this.state.movie.release_date}</span></p>
                 <p className='infoTitle'>Runtime: <span className='infoContent'>{this.state.movie.runtime} minutes</span></p>
                 <p className='infoTitle'>Tagline: <span className='infoContent'>{this.state.movie.tagline}</span></p>
-                <p className='infoTitle'>Genres: <span className='infoContent'>{this.state.movie.genres}</span></p>
-                <Link to="/">
-                  <input type="image" className='arrow' src={arrowIcon} alt='arrow icon'/>
-                </Link>
-              </div>
+                <p className='infoTitle'>Genres: <span className='infoContent'>{[this.state.movie.genres].join()}</span></p>
+                {/* ['Action','Adventure','Drama','Fantasy'] */}
+                <div className="arrow-flex">
+                  <Link to="/">
+                    <input type="image" className='arrow' src={arrowIcon} alt='arrow icon'/>
+                  </Link>
+                </div>
+              </section>
             </div>
           </div>
         </>
