@@ -8,6 +8,7 @@ class MovieDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      genres: [],
       movie: {},
       error: '',
       isLoading: false
@@ -18,12 +19,25 @@ class MovieDisplay extends Component {
     this.setState({ isLoading: true })
 
     getMovieDetails(this.props.id)
-      .then(data => this.setState({ movie: data.movie, isLoading: false }))
+      .then(data => {
+        let genres = data.movie.genres.join(', ') 
+        //prevState with spread allows you to keep all props of this.state object (does not delete them like we had previously)
+        this.setState((prevState) => {
+          return {...prevState, genres: genres, movie: data.movie, isLoading: false }
+        })
+      })
       .catch(error => {
         this.setState({ error: "ERROR: " + error.message })
       })
    }
     render() {
+      // let something;
+      // //default setting is an empty object
+      // //convert object to an array 
+      // if(Object.keys(this.state.movie).length !== 0) {
+      //   something = this.state.movie.genres.join(", ")
+      // }
+
       return (
         <>
           { this.state.error && <p>{this.state.error}</p> }
@@ -37,7 +51,8 @@ class MovieDisplay extends Component {
                 <p className='infoTitle'>Release Date: <span className='infoContent'>{this.state.movie.release_date}</span></p>
                 <p className='infoTitle'>Runtime: <span className='infoContent'>{this.state.movie.runtime} minutes</span></p>
                 <p className='infoTitle'>Tagline: <span className='infoContent'>{this.state.movie.tagline}</span></p>
-                <p className='infoTitle'>Genres: <span className='infoContent'>{[this.state.movie.genres].join()}</span></p>
+                <p className='infoTitle'>Genres: <span className='infoContent'>{this.state.genres}</span></p>
+                {/* <p className='infoTitle'>Genres: <span className='infoContent'>{[this.state.movie.genres].join('\u00a0')}</span></p> */}
                 {/* ['Action','Adventure','Drama','Fantasy'] */}
                 <div className="arrow-flex">
                   <Link to="/">
