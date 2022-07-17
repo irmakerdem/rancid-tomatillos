@@ -37,7 +37,8 @@ class MovieDisplay extends Component {
                 <p className='infoTitle'>Release Date: <span className='infoContent'>{this.state.movie.release_date}</span></p>
                 <p className='infoTitle'>Runtime: <span className='infoContent'>{this.state.movie.runtime} minutes</span></p>
                 <p className='infoTitle'>Tagline: <span className='infoContent'>{this.state.movie.tagline}</span></p>
-                <p className='infoTitle'>Genres: <span className='infoContent'>{this.state.movie.genres}</span></p>
+                <p className='infoTitle'>Genres: <span className='infoContent'>{[this.state.movie.genres].join()}</span></p>
+                {/* ['Action','Adventure','Drama','Fantasy'] */}
                 <div className="arrow-flex">
                   <Link to="/">
                     <input type="image" className='arrow' src={arrowIcon} alt='arrow icon'/>
