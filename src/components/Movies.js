@@ -13,7 +13,7 @@ const Movies = ({movies, findMovie}) => {
         key={movie.id}
         id={movie.id}
         findMovie={findMovie}
-        />
+      />
     )
   })
   return (

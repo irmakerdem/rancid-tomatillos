@@ -14,5 +14,4 @@ const Card = ({title, img, rating, id}) => {
   )
 }
 
-
 export default Card;
