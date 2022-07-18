@@ -1,4 +1,4 @@
-describe('Rancid Tomatillos', () => {
+describe('Rancid Tomatillos home page', () => {
   beforeEach(() => {
     cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
       .visit('http://localhost:3000')
@@ -9,7 +9,7 @@ describe('Rancid Tomatillos', () => {
     cy.get('.moviesContainer').find('.card').should('have.length', '40')
   });
 
-  it('Should be able to display a loading message if home page download speed is slow', () => {
+  it('Should be able to display a loading message if download speed is slow', () => {
     cy.contains('Loading...')
   });
 
@@ -36,13 +36,13 @@ describe('Rancid Tomatillos', () => {
       .should('have.attr', 'alt', 'Money Plane poster')
   });
 
-  it('Should be able to select a movie by title on the home page\'s dropdown and be directed to the movie details page', () => {
+  it('Should be able to select a movie by title in the dropdown and be directed to that movie\'s details page', () => {
     cy.get('form').find('select').select('Money Plane').should('have.value', '694919')
     cy.get('button').click()
     cy.url().should('include', '/694919')
   });
 
-  it('Should be able to show a message when a 500 error occurs', () => {
+  it('Should be able to display a message when a 500 error occurs', () => {
     cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
       statusCode: 500
     })
@@ -50,7 +50,7 @@ describe('Rancid Tomatillos', () => {
     cy.contains("Oopsies! Something went wrong 🤡")
   });
 
-  it('Should be able to show a message when a 404 error occurs', () => {
+  it('Should be able to display a message when a 404 error occurs', () => {
     cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
       statusCode: 404
     })

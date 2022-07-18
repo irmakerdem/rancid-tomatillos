@@ -1,5 +1,5 @@
 import '../styles/App.css';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Movies from './Movies';
 import MovieDisplay from './MovieDisplay';
 import { Route } from 'react-router-dom';
@@ -15,49 +15,31 @@ class App extends Component {
     }
   }
 
-componentDidMount = () => {
-  this.setState({ isLoading: true} )
-  // fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-  //   .then(response => {
-  //     if(!response.ok) {
-  //       throw new Error("Oopsies! Something went wrong 🤡")
-  //     } else {
-  //       return response.json()
-  //     }
-  //   })
-  getMovies()
-    .then(data => this.setState({ movies: data.movies, isLoading: false }))
-    .catch(error => {
-      this.setState({ error: "ERROR: " + error.message })
-    })
-}
-
-  // findMovie = (id) => {
-  //   fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
-  //     .then(response => response.json())
-  //     .then(data => this.setState({ movie: data.movie }))
-  //     .catch(error => {
-  //       this.setState({ error: "ERROR: " + error.message })
-  //     })
-  // }
+  componentDidMount = () => {
+    this.setState({ isLoading: true })
+    getMovies()
+      .then(data => this.setState({ movies: data.movies, isLoading: false }))
+      .catch(error => {
+        this.setState({ error: "ERROR: " + error.message })
+      })
+  }
 
   render() {
     return (
       <div className='app'>
         <header className='siteHeader'>
-          <h1 className='siteTitle'> 🍿 Rancid Tomatillos 🍿</h1>
+          <h1 className='siteTitle'>🍿 Rancid Tomatillos 🍿</h1>
         </header>
-        {/* <SearchBar movies={this.state.movies} /> */}
-        { this.state.isLoading && <p>⏳ Loading...</p> }
-        { this.state.error && <p>{this.state.error}</p> }
+        {this.state.isLoading && <p className='loading'>⏳ Loading...</p>}
+        {this.state.error && <p className='error'>{this.state.error}</p>}
         <Route
           exact path="/"     
-          render={ () => <Movies movies={this.state.movies} />
+          render={() => <Movies movies={this.state.movies} />
           }
         />
         <Route
           exact path="/:movieId"
-          render={({ match }) => <MovieDisplay id={match.params.movieId}/>
+          render={({ match }) => <MovieDisplay id={match.params.movieId} />
           }
         />
       </div>
