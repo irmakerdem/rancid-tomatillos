@@ -33,8 +33,8 @@ Rancid Tomatillos is a mash-up between IMDB, Rotten Tomatoes, and any movie data
 1. Clone this [repository](https://github.com/CorCanavan/rancid-tomatillos).
 2. `cd` into the directory.
 3. Run `npm install`.
-4. To run tests, run `npm run cypress`.
-5. Start the server by running `npm start` and view at http://localhost:3000/.
+4. Start the server by running `npm start` and view at http://localhost:3000/.
+5. To run tests, first install Cypress with `npm i -D cypress` then run `npm run cypress`.
 6. Enter `control + c` to stop the server at any time.
 
 ### Features
