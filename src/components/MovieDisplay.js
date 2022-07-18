@@ -31,12 +31,12 @@ class MovieDisplay extends Component {
       })
    }
     render() {
-      // let something;
-      // //default setting is an empty object
-      // //convert object to an array 
-      // if(Object.keys(this.state.movie).length !== 0) {
-      //   something = this.state.movie.genres.join(", ")
-      // }
+      let something;
+      //default setting is an empty object
+      //convert object to an array 
+      if(Object.keys(this.state.movie).length !== 0) {
+        something = this.state.movie.genres.join(", ")
+      }
 
       return (
         <>
@@ -52,8 +52,10 @@ class MovieDisplay extends Component {
                 <p className='infoTitle'>Runtime: <span className='infoContent'>{this.state.movie.runtime} minutes</span></p>
                 <p className='infoTitle'>Tagline: <span className='infoContent'>{this.state.movie.tagline}</span></p>
                 <p className='infoTitle'>Genres: <span className='infoContent'>{this.state.genres}</span></p>
+                <p className='infoTitle'>Genres: <span className='infoContent'>{something}</span></p>
                 {/* <p className='infoTitle'>Genres: <span className='infoContent'>{[this.state.movie.genres].join('\u00a0')}</span></p> */}
                 {/* ['Action','Adventure','Drama','Fantasy'] */}
+                  {/* ['Action,Adventure,Drama,Fantasy', ] */}
                 <div className="arrow-flex">
                   <Link to="/">
                     <input type="image" className='arrow' src={arrowIcon} alt='arrow icon'/>
