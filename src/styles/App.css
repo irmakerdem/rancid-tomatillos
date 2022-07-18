@@ -4,6 +4,10 @@
   font-family: Montserrat;
 }
 
+body {
+  margin: 0;
+}
+
 .loading {
   color: white;
 }
