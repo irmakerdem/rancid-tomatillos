@@ -39,7 +39,7 @@ Rancid Tomatillos is a mash-up between IMDB, Rotten Tomatoes, and any movie data
 
 ### Features
 
-![Rancid Tomatillos gif](https://media.giphy.com/media/IATPLZW64jvabscaEn/giphy-downsized-large.gif)
+![Rancid Tomatillos gif](https://media.giphy.com/media/IATPLZW64jvabscaEn/giphy-downsized.gif)
 
 - User sees movie cards 🂡 on page load
 - User can click a movie's image 📸 to be directed to a page with its details that has a backdrop 🌠 image
