@@ -8,6 +8,7 @@ class MovieDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      genres: [],
       movie: {},
       error: ''
     }
@@ -15,7 +16,10 @@ class MovieDisplay extends Component {
 
   componentDidMount = () => {
     getMovieDetails(this.props.id)
-      .then(data => this.setState({ movie: data.movie }))
+      .then(data => {
+        let genres = data.movie.genres.join(', ')
+        this.setState({ genres: genres, movie: data.movie })
+      })
       .catch(error => {
         this.setState({ error: "ERROR: " + error.message })
       })
@@ -31,11 +35,11 @@ class MovieDisplay extends Component {
             <section className='movieInfo'>
               <p className='infoTitle'>Title: <span className='infoContent'> {this.state.movie.title}</span></p>
               <p className='infoTitle'>Average Rating: <span className='infoContent'>{Number(this.state.movie.average_rating).toFixed(1)}</span></p>
-              <p className='infoTitle'>Overview: <span className='infoContent'>{this.state.movie.overview}</span></p>
+              <p className='infoTitle'>Overview: <span className='infoContent'>{this.state.movie.overview ? this.state.movie.overview : 'N/A'}</span></p>
               <p className='infoTitle'>Release Date: <span className='infoContent'>{this.state.movie.release_date}</span></p>
               <p className='infoTitle'>Runtime: <span className='infoContent'>{this.state.movie.runtime} minutes</span></p>
               <p className='infoTitle'>Tagline: <span className='infoContent'>{this.state.movie.tagline ? this.state.movie.tagline : 'N/A'}</span></p>
-              <p className='infoTitle'>Genres: <span className='infoContent'>{[this.state.movie.genres].join(', ')}</span></p>
+              <p className='infoTitle'>Genres: <span className='infoContent'>{this.state.genres}</span></p>
               <div className='arrow-flex'>
                 <Link to="/">
                   <input type='image' className='arrow' src={arrowIcon} alt='arrow icon'/>
