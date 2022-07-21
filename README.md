@@ -4,6 +4,7 @@
 - [Introduction](#introduction)
 - [Learning Goals](#learning-goals)
 - [Technologies](#technologies)
+- [Deployed Link](#deployed-link)
 - [Set Up](#set-up)
 - [Features](#features)
 - [Organizational Resources](#organizational-resources)
@@ -28,6 +29,9 @@ Rancid Tomatillos is a mash-up between IMDB, Rotten Tomatoes, and any movie data
 - React
 - React Router
 - Cypress
+
+### Deployed Link
+Visit the app at the deployed link [here](https://rancid-tomatillos-ci.herokuapp.com/). 
 
 ### Set Up
 1. Clone this [repository](https://github.com/CorCanavan/rancid-tomatillos).
