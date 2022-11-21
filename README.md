@@ -31,7 +31,7 @@ Rancid Tomatillos is a mash-up between IMDB, Rotten Tomatoes, and any movie data
 - Cypress
 
 ### Deployed Link
-Visit the app at the deployed link [here](https://rancid-tomatillos-cc.vercel.app/). 
+Visit the app at the deployed link [here](https://rancid-tomatillos-cc.vercel.app/)! 
 
 ### Set Up
 1. Clone this [repository](https://github.com/CorCanavan/rancid-tomatillos).
